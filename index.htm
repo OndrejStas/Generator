@@ -1,0 +1,79 @@
+ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <title></title>
+  <script>
+    function Genrate()
+    {
+      var req = "{\"className\":\""+document.getElementById("className").value+"\",\"input\":\""+document.getElementById("inputt").value+"\"}";
+      
+var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("output").value   = this.responseText;
+    }
+  };
+  xhttp.open("GET", '/gettable/' + req  , true);
+  xhttp.send();
+
+var req = "{\"input\":\""+document.getElementById("inputt").value+"\"}";
+      
+var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("houtput").value   = this.responseText;
+    }
+  };
+  xhttp.open("GET", '/gethtmltable/' + req  , true);
+  xhttp.send();
+
+
+var req = "{\"input\":\""+document.getElementById("inputt").value+"\"}";
+      
+var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("jToutput").value   = this.responseText;
+    }
+  };
+  xhttp.open("GET", '/getjtable/' + req  , true);
+  xhttp.send();
+
+
+    }
+    
+  </script>
+  
+  
+  </head>
+  <body>
+     <table>
+            <tr>
+                <td >Název třídy: <input type="text" name="clasName" id="className"><br></td>
+                <td>Volby:
+                    <input type="checkbox" name="co" value="male" checked style="display:inline;"> Vše<br>
+                    <input type="checkbox" name="co" value="female" style="display:inline;"> Třída<br>
+                    <input type="checkbox" name="co" value="other"> JTable
+               </td>
+            </tr>
+            <tr>
+              <td>Input:</td>
+              <td>Class:</td>
+              <td>HtmlTable:</td>
+              <td>jTable:</td>
+            </tr>
+            <tr>
+              <td><textarea rows="10" cols="50" name="inputt" id="inputt"></textarea></td>
+              <td><textarea rows="10" cols="50" name="output" id="output"></textarea></td>
+              <td><textarea rows="10" cols="50" name="output" id="houtput"></textarea></td>
+              <td><textarea rows="10" cols="50" name="output" id="jToutput"></textarea></td>
+            </tr>
+            <tr>
+              <td><button type="button" onclick="Genrate()">Generuj</button></td>
+              <td></td>
+            </tr>
+     </table>
+  </body>
+</html>
